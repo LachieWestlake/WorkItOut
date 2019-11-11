@@ -154,12 +154,10 @@ public class CreateWorkout extends AppCompatActivity {
 
 
         }
-        System.out.println("Reached");
+
         System.out.println(exerciseArray.size());
         for(int i = 0; i < exerciseArray.size(); i++) {
-            System.out.println("Reached");
-            System.out.println(i);
-            System.out.println(exerciseArray.get(i));
+
             writeExercises(input_string, exerciseArray.get(i).toString());
         }
         returnToMain();

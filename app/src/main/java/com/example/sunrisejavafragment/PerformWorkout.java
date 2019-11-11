@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.sunrisejavafragment.CSVReader;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.interrupted;
+
 public class PerformWorkout extends AppCompatActivity {
     String WorkoutName;
 
@@ -28,7 +32,8 @@ public class PerformWorkout extends AppCompatActivity {
     List<String> exercises = new ArrayList<>();
     private CSVReader file_reader;
 
-
+    LoadThread newThread = new LoadThread();
+    boolean bool = false;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -92,10 +97,29 @@ public class PerformWorkout extends AppCompatActivity {
         Done.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
+
+
                 if(exerciseIndex < size-1) {
                     exerciseIndex++;
                     nextExercise(exerciseIndex);
+                }else if(exerciseIndex == size-1){
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "This is a Workout is now complete",
+                            Toast.LENGTH_SHORT);
+
+                    toast.show();
+
+                    ((ProgressBar) findViewById(R.id.progressBar)).setProgress(size);
+                    exerciseIndex = size;
+                    TextView progressText = (TextView) findViewById(R.id.exerciseprogressText);
+                    progressText.setText(size + "/" + exercises.size());
+                    TextView exerciseText = (TextView) findViewById(R.id.exercisenameText);
+                    exerciseText.setText("Complete!");
+
                 }
+
+
             }
         });
 
@@ -106,6 +130,20 @@ public class PerformWorkout extends AppCompatActivity {
                 if(exerciseIndex < size-1) {
                     exerciseIndex++;
                     nextExercise(exerciseIndex);
+                }else if(exerciseIndex == size-1){
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "This is a Workout is now complete",
+                            Toast.LENGTH_SHORT);
+
+                    toast.show();
+
+                    ((ProgressBar) findViewById(R.id.progressBar)).setProgress(size);
+                    exerciseIndex = size;
+                    TextView progressText = (TextView) findViewById(R.id.exerciseprogressText);
+                    progressText.setText(size + "/" + exercises.size());
+                    TextView exerciseText = (TextView) findViewById(R.id.exercisenameText);
+                    exerciseText.setText("Complete!");
+
                 }
             }
         });
@@ -132,13 +170,14 @@ public class PerformWorkout extends AppCompatActivity {
             }
         });
         ((ProgressBar) findViewById(R.id.progressBar)).setMax(exercises.size());
-        LoadThread newThread = new LoadThread();
         newThread.execute();
     }
 
     private void returnToMain(){
         Intent myIntent = new Intent(PerformWorkout.this, MainActivity.class);
         startActivity(myIntent);
+
+        bool = true;
     }
 
     private Integer previousExercise(Integer exerciseIndex){
@@ -156,7 +195,7 @@ public class PerformWorkout extends AppCompatActivity {
     }
 
     private Integer nextExercise(Integer exerciseIndex){
-        System.out.println(exerciseIndex);
+
 
 
 
@@ -193,12 +232,14 @@ public class PerformWorkout extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] objects) {
-            System.out.println("Background");
 
 
-            while(exerciseIndex != exercises.size()) {
-                System.out.println("Background");
+            while (bool == false) {
+                if (interrupted()) {
+                    return null;
+                }
                 publishProgress(exerciseIndex);
+
             }
             return null;
         }
@@ -206,12 +247,18 @@ public class PerformWorkout extends AppCompatActivity {
         protected void onProgressUpdate(Object[] values) {
             super.onProgressUpdate(values);
             int progressInt = (Integer) (values[0]);
-            System.out.println(progressInt);
+
 
             ((ProgressBar) findViewById(R.id.progressBar)).setProgress(progressInt);
             TextView progressText = (TextView) findViewById(R.id.exerciseprogressText);
             progressText.setText(progressInt + "/" + exercises.size());
+
+
+
         }
+
     }
 
+
 }
+

@@ -113,6 +113,7 @@
                     >
 
                     <ImageView
+                        android:id="@+id/imageholder"
                         android:layout_width="wrap_content"
                         android:layout_height="200dp"
                         android:foregroundGravity="left"
@@ -122,7 +123,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="108dp"
                     android:gravity="center_horizontal"
                     android:paddingTop="4dp"
@@ -135,9 +136,10 @@
                         android:layout_gravity="left"
                         android:background="@android:color/white"
                         android:gravity="left"
+                        android:paddingLeft="50dp"
+                        android:text="yes"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="20sp"
-                        android:text = "yes"
                         android:textStyle="bold" />
 
                     <TextView
@@ -147,11 +149,11 @@
                         android:layout_gravity="center"
                         android:background="@android:color/white"
                         android:gravity="right"
+                        android:paddingRight="40dp"
                         android:text="yes"
                         android:textColor="@color/cardview_dark_background"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
 
 
                 </TableRow>
