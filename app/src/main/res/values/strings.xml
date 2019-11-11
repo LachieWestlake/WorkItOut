@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SunriseJavaFragment</string>
+    <string name="appTitle"> Work It Out</string>
+    <string name="homeTabText">Your Workouts</string>
+    <string name="rangeTabText">Our Workouts</string>
+    <string name="changeTabText">Change Location</string>
+
+</resources>

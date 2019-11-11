@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="360dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="@string/appTitle"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:background="@android:color/holo_red_dark"
+                android:paddingTop="10dp" />
+
+            <TableRow
+                android:background="#000000"
+                android:paddingTop="4dp" />
+
+
+        </TableLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="470dp" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:id="@+id/TableLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="0sp"
+            android:stretchColumns="0,1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="108dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/white"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Name: "
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/workoutNameTxt"
+                    android:layout_width="220dp"
+
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#cfd8de"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/delete" />
+
+            </TableRow>
+
+            <TableRow
+                android:background="@android:color/darker_gray"
+                android:paddingTop="4dp" />
+
+            <TableRow
+                android:background="@android:color/white"
+                android:paddingTop="20dp" />
+
+
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/TableLayout02"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="0sp"
+            android:stretchColumns="0,1,2,3">
+        </TableLayout>
+
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:padding="0sp"
+                android:stretchColumns="0,1">
+
+                <TableRow
+                    android:id="@+id/AddRow"
+                    android:layout_height="100dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:foregroundGravity="left"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/add"
+                        android:tint="@color/cardview_dark_background" />
+
+                </TableRow>
+            </TableLayout>
+
+
+
+    </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <TableRow
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/black"
+        android:gravity="bottom"
+        android:paddingTop="4dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        >
+
+
+        <ImageView
+            android:id="@+id/cancelBtn"
+            android:layout_width="60dp"
+            android:layout_height="63dp"
+            android:background="@color/cardview_dark_background"
+            android:foregroundGravity="right"
+            android:onClick="returnToMain"
+            android:padding="18dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/undo"
+            android:tint="@android:color/white" />
+
+
+        <TextView
+            android:id="@+id/cancelTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/cardview_dark_background"
+            android:gravity="right"
+            android:onClick="returnToMain"
+            android:padding="18dp"
+            android:text="Cancel"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/black"
+            android:gravity="right"
+            android:padding="10dp"
+
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/doneTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/cardview_dark_background"
+            android:gravity="right"
+            android:padding="18dp"
+            android:text="Done"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/doneBtn"
+            android:layout_width="70dp"
+            android:layout_height="63dp"
+            android:background="@color/cardview_dark_background"
+            android:foregroundGravity="right"
+            android:padding="18dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/save"
+            android:tint="@android:color/white" />
+
+    </TableRow>
+
+
+
+</TableLayout>
