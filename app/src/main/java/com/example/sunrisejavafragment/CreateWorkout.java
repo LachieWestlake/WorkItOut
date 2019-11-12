@@ -283,7 +283,7 @@ public class CreateWorkout extends AppCompatActivity {
 
 
 
-        EditText quantityTextView = new EditText(this);
+        final EditText quantityTextView = new EditText(this);
         quantityTextView.setTextColor(getResources().getColor(android.R.color.black));
         quantityTextView.setWidth(60);
 
@@ -295,8 +295,7 @@ public class CreateWorkout extends AppCompatActivity {
 
         allQTs.add(quantityTextView);
         allEDs.add(rowTextView);
-        System.out.println("AllEdSZIE");
-        System.out.println(allEDs.size());
+
 
         row.setLayoutParams(tableRow);
 
@@ -307,8 +306,11 @@ public class CreateWorkout extends AppCompatActivity {
 
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
+                allEDs.remove(rowTextView);
+                allQTs.remove(quantityTextView);
                 TableLayout1.removeView(row);
                 TableLayout1.removeView(greyRow);
+
             }
         });
 

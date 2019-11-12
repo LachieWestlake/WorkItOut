@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.sunrisejavafragment.CSVReader;
 import com.example.sunrisejavafragment.CreateWorkout;
+import com.example.sunrisejavafragment.EditWorkout;
 import com.example.sunrisejavafragment.PerformWorkout;
 import com.example.sunrisejavafragment.FragmentViewModel;
 import com.example.sunrisejavafragment.R;
@@ -184,6 +185,14 @@ public class HomeFragment extends Fragment {
         row.addView(rowTextView);
         row.addView(goButton);
 
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                String textvalue = rowTextView.getText().toString();
+                Intent myIntent = new Intent(getActivity(), EditWorkout.class);
+                startActivity(myIntent);
+            }
+        });
 
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
