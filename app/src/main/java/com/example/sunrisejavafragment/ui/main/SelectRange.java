@@ -9,12 +9,10 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.os.Environment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -24,11 +22,8 @@ import com.example.sunrisejavafragment.CSVReader;
 import com.example.sunrisejavafragment.CreateWorkout;
 import com.example.sunrisejavafragment.PerformWorkout;
 import com.example.sunrisejavafragment.FragmentViewModel;
-import com.example.sunrisejavafragment.MainActivity;
 import com.example.sunrisejavafragment.R;
-import com.example.sunrisejavafragment.calc.GeoLocation;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

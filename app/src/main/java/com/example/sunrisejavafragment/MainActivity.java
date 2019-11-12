@@ -3,7 +3,6 @@ package com.example.sunrisejavafragment;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.example.sunrisejavafragment.calc.GeoLocation;
 import com.example.sunrisejavafragment.ui.main.HomeFragment;
 import com.example.sunrisejavafragment.ui.main.SelectRange;
 import com.google.android.material.tabs.TabLayout;
@@ -22,7 +21,6 @@ import com.example.sunrisejavafragment.ui.main.SectionsPagerAdapter;
 public class MainActivity extends AppCompatActivity implements SelectRange.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener {
 
     private int previous_tab = 0;
-    private GeoLocation selected_location;
     private FragmentViewModel model;
     private ActionBar actionBar;
     @Override
@@ -81,14 +79,6 @@ public class MainActivity extends AppCompatActivity implements SelectRange.OnFra
 
     }
 
-    public void setSelected_location(GeoLocation input_location)
-    {
-        if (input_location != null)
-        {
-            selected_location = input_location;
-            System.out.println("SET: " + selected_location.getLocationName());
-        }
-    }
 
 
     @Override

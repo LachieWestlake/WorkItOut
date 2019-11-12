@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -105,7 +106,7 @@ public class PerformWorkout extends AppCompatActivity {
                     nextExercise(exerciseIndex);
                 }else if(exerciseIndex == size-1){
                     Toast toast = Toast.makeText(getApplicationContext(),
-                            "This is a Workout is now complete",
+                            "This is workout is now complete, Well Done!",
                             Toast.LENGTH_SHORT);
 
                     toast.show();
@@ -193,6 +194,8 @@ public class PerformWorkout extends AppCompatActivity {
 
         return exerciseIndex;
     }
+
+
 
     private Integer nextExercise(Integer exerciseIndex){
 

@@ -92,6 +92,7 @@
                     android:textSize="24sp" />
 
                 <ImageView
+                    android:id="@+id/deleteImage"
                     android:layout_width="48dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/delete" />

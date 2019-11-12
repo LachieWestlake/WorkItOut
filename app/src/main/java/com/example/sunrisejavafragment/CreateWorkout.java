@@ -7,6 +7,7 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ public class CreateWorkout extends AppCompatActivity {
     public Integer RowCount = 0;
 
     private CSVReader file_reader;
+    public List<EditText> allQTs = new ArrayList<EditText>();
     public List<EditText> allEDs = new ArrayList<EditText>();
 
 
@@ -73,6 +75,15 @@ public class CreateWorkout extends AppCompatActivity {
                 returnToMain();
             }
         });
+
+        ImageView DeleteImage = (ImageView) findViewById(R.id.deleteImage);
+        DeleteImage.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                returnToMain();
+            }
+        });
+
 
         TextView CancelTxt = (TextView) findViewById(R.id.cancelTxt);
         CancelTxt.setOnClickListener(new View.OnClickListener() {
@@ -180,21 +191,36 @@ public class CreateWorkout extends AppCompatActivity {
         System.out.println(allEDs.size());
 
         String[] ETResults = new String[allEDs.size()];
+        String[] QTResults = new String[allQTs.size()];
 
         for(int i=0; i < allEDs.size(); i++){
             ETResults[i] = allEDs.get(i).getText().toString();
+            QTResults[i] = allQTs.get(i).getText().toString();
         }
 
         for(int i = 0; i < allEDs.size(); i++){
-            System.out.println("Found");
-            System.out.println(Exercises.size());
-            Exercises.add(ETResults[i]);
+            Exercises.add(ETResults[i] + " x" + QTResults[i]);
 
         }
 
 
 
         writeToExerciseFile(WorkoutName, Exercises);
+
+
+
+
+    }
+
+    private void PickFromGallery(){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+
+        String[] mimeTypes = {"image/jpeg", "image/png"};
+
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+
+        startActivityForResult(intent, 1000);
 
 
 
@@ -239,6 +265,7 @@ public class CreateWorkout extends AppCompatActivity {
 
 
 
+
         final ImageView goButton = new ImageView(this);
         goButton.setImageResource(R.drawable.clear);
         goButton.setLayoutParams(goParams);
@@ -266,6 +293,7 @@ public class CreateWorkout extends AppCompatActivity {
         row.addView(quantityTextView);
         row.addView(goButton);
 
+        allQTs.add(quantityTextView);
         allEDs.add(rowTextView);
         System.out.println("AllEdSZIE");
         System.out.println(allEDs.size());
@@ -281,6 +309,12 @@ public class CreateWorkout extends AppCompatActivity {
             @Override public void onClick(View v) {
                 TableLayout1.removeView(row);
                 TableLayout1.removeView(greyRow);
+            }
+        });
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+               PickFromGallery();
             }
         });
     }
