@@ -37,10 +37,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
         switch (position)
         {
             case 0:
-                return HomeFragment.newInstance(new GeoLocation("Melbourne", -37.50, 145.01, tz));
-
+                return HomeFragment.newInstance();
             case 1:
-                return SelectRange.newInstance(new GeoLocation("Melbourne", -37.50, 145.01, tz));
+                return SelectRange.newInstance();
 
             default:
                 return null;
